@@ -8,7 +8,7 @@ int searchInsert(vector<int>& nums, int target) {
 			return -1;
        
         while( start <= end ){     //note for "=", while terminate condition
-            const int mid = start + ( end - start ) >> 1;
+            const int mid = start + ( ( end - start ) >> 1);  // priority : + > >>
             if( nums[mid] == target )      
                 return mid;
 			else if( nums[mid] > target ){
@@ -26,5 +26,9 @@ int main()
 	int A[] = {1, 3};
 	vector<int> a(A, A + 2);
 	int t = searchInsert(a, 2);
+	int end = 1;
+	int start = 1;
+	int x = start + ((end - start) >> 1);
+	cout << x << endl;
 	return 0;
 }
