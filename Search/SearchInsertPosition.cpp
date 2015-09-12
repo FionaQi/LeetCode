@@ -3,7 +3,7 @@
 using namespace std;
 int searchInsert(vector<int>& nums, int target) {
         int start = 0;
-        int end = nums.size();
+        int end = nums.size() - 1;   //notice
 		if (end < 0)
 			return -1;
        
