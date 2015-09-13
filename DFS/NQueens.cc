@@ -4,21 +4,18 @@
 using namespace std;
 class NQueens{
 public:
-	int N;
 	vector<vector<string> > solveNQueens(int n) {
 		this->N = n;
-		for (int i = 0; i < n; i++) {
-			string ma(n, '.');
-			map.push_back(ma);
-		}
-		putQueen(0);
+		this->map = vector<string>(n, string(n, '.'));
+		dfs(0);
 		return res;
 	}
 private:
+	int N;
 	vector<vector<string> > res;  //total count
 	vector<string> map;
-	void putQueen(int row) {
-		if (row == N) {
+	void dfs(int row) {			//每次放一行
+		if (row == this->N) {
 			res.push_back(map);
 			print();
 			return;
@@ -26,20 +23,29 @@ private:
 		for (int i = 0; i < N; i++) {   //i:col
 			if (isOK(row, i)) {
 				map[row][i] = 'Q';
-				putQueen(row + 1);
+				dfs(row + 1);
 				map[row][i] = '.';
 			}
 
 		}
 	}
-	bool isOK(int x, int y) {   //row, col
-		for (int i = 0; i < N; i++) {    //rows
-			for (int j = 0; j < N; j++) {    //colomns
-				// colomn reuse/ row / 
-				if (x == i || y == j || j - i == y - x || x + y == i + j) {
-					if (map[i][j] == 'Q') {
-						return false;
-					}
+	bool isOK(int row, int col) {  
+		for (int i = 0; i < row; i++) {    //rows
+			if (map[i][col] == 'Q') {
+				return false;
+			}
+		}
+		for (int i = 0; i < N; i++) {    
+			if (row + col - i < N && row + col - i >= 0) {   
+				if (map[i][row + col - i] == 'Q') {
+					return false;
+				}
+			}
+		}
+		for (int i = 0; i < N; i++) {
+			if (i - row + col < N && i - row + col >= 0) {
+				if (map[i][i - row + col] == 'Q') {
+					return false;
 				}
 			}
 		}
