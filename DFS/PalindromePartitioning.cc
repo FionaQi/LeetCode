@@ -8,7 +8,7 @@ public:
 	vector<vector<string> > partition(string s) {
 		int n = s.size();
 		if (n >= 1)
-			dfs(s, 0, n);
+			dfs(s, 0, n);	//notice right endien, n instead of n-1
 		return res;
 	}
 private:
