@@ -38,10 +38,10 @@ ListNode *reverse(ListNode *head){
 	ListNode *pre = nullptr;
 	ListNode *cur = head;
 	while (cur) {
-		ListNode *sec = cur->next;
+		const ListNode *sec = cur->next;
 		cur->next = pre;
 		pre = cur;
-		cur = sec;
+		cur = const_cast<ListNode *>(sec);
 	}
 	return pre;
 }
