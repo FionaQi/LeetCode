@@ -80,6 +80,6 @@ private:
 
 int main() {
 	Solution s;
-	int res = s.minCut("aab");
+	int res = s.minCut("aaaaaaaaaaaaa");   //time limit exceed
 	return 0;
 }
