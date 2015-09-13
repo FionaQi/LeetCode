@@ -38,7 +38,7 @@ ListNode *reverse(ListNode *head){
 	ListNode *pre = nullptr;
 	ListNode *cur = head;
 	while (cur) {
-		const ListNode *sec = cur->next;
+		ListNode *sec = cur->next;
 		cur->next = pre;
 		pre = cur;
 		cur = sec;
