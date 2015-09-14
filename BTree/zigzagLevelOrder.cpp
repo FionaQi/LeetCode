@@ -8,6 +8,7 @@ struct TreeNode {
       TreeNode *right;
       TreeNode(int x) : val(x), left(NULL), right(NULL) {}
   };
+
 vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
         vector<vector<int>> res;
         if(!root) return res;
@@ -53,6 +54,7 @@ int Numberof1s(int n)
 	}
 	return cnt;
 }
+
 void main()
 {
 	TreeNode * r= new TreeNode(1);
