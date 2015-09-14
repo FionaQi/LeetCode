@@ -1,61 +1,61 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-void merge(int a[], int temp[], const int l, const int r, const int end) {  //合并两个已排序好的序列
-	int i = l;
-	int left = l;
-	int right = r;
-	while(left<r && right <= end) {
-		while(a[left] <= a[right] && left < r) {
-			temp[i++] = a[left++];
-		}
-		while(a[left]>a[right] && right <= end) {
-			temp[i++] = a[right++];
-		}
-	}
-	if( right > end ) {
-		while( i <= end )		
-			temp[i++] = a[left++];
-	}
-	else if( left >= r ) {
-		while( i <= end )	temp[i++] = a[right++];
-	}
-	//***************************
-	for(int j = l; j <= end; ++j )
-	{
-		a[j] = temp[j];
-	}
+void MergeSort(int a[], int start, int end);
+void merge(int a[], const int start, const int mid, const int end);
+
+void MergeSort(int a[], int n) {
+	if (n <= 1)	return;
+	MergeSort(a, 0, n - 1);
 }
 
-void MergeSortIter(int a[], int temp[], int start, int end) {
-	if(start==end) {
-		temp[start] = a[start];
+void MergeSort(int a[], int start, int end) {
+	if (start == end) {
 		return;
 	}
-	else if(start<end) {
-		int len = (end - start)/2;
-		MergeSortIter(a, temp, start, start+len);
-		MergeSortIter(a, temp, start+len+1, end);
-		merge(a, temp, start, start+len+1, end);
+	else if (start<end) {
+		int mid = start + (end - start) / 2;
+		MergeSort(a, start, mid);
+		MergeSort(a, mid + 1, end);
+		merge(a, start, mid, end);
 	}
 }
-void MergeSort(int a[], int n) {
-	if(n<=1)	return;
-	int * temp = new int[n];
-	MergeSortIter(a, temp, 0, n-1);
-	//swap(a, temp);
 
+void merge(int a[], const int start, const int mid, const int end) {  //mid : tail of lhs array
+	const int lLen = mid + 1 - start;
+	const int rLen = end - mid;
+	const vector<int> Left(&a[start], &a[start] + lLen);
+	const vector<int> Right(&a[mid + 1], &a[mid + 1] + rLen);
+
+	int i = 0;
+	int j = 0;
+	int k = start;
+	while(i < lLen && j < rLen) {
+		while( j < rLen && Left[i] > Right[j] ) {
+			a[k++] = Right[j++];
+		}
+		while ( i <= lLen && Left[i] <= Right[j]) {
+			a[k++] = Left[i++];
+		}
+	}
+	
+	while( i < lLen )		
+		a[k++] = Left[i++];
+	
+	while( j < rLen ) {
+		a[k++] = Right[j++];
+	}
 }
-
 
 
 void main()
 {
 	int a[] = {7,3,2,1,5,6};
-	int *b = new int[6];
+	
 	MergeSort(a, 6);
 	for(auto i = 0; i<6; ++i ) 
 	{
-		cout<<" "<<b[i];
+		cout<<" "<<a[i];
 	}
 	int t;
 }
