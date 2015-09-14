@@ -8,7 +8,11 @@ using namespace std;
       TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  };
 
+ vector<TreeNode *> createTrees(int start, int end);
 
+ vector<TreeNode *> generateTrees(int n) {
+	 return createTrees(1, n);
+ }
 
 vector<TreeNode *> createTrees(int start, int end) {
     vector<TreeNode *> result;
@@ -33,9 +37,7 @@ vector<TreeNode *> createTrees(int start, int end) {
     return result;
 }
 
-vector<TreeNode *> generateTrees(int n) {
-    return createTrees(1, n);
-}
+
 
 int numTrees(int n) {
     if(n < 2) return 1;
