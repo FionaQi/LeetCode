@@ -1,5 +1,17 @@
 #include <iostream>
 using namespace std;
+
+int merge(int a[], int temp[], const int l, const int r, const int end);
+int MergeSortIter(int a[], int temp[], int start, int end);
+//数组中的逆序对
+int InversePairs(int a[], int n) {
+	int res = 0;
+	if (n <= 1)	return res;
+	int * temp = new int[n];
+	return MergeSortIter(a, temp, 0, n - 1);
+	//swap(a, temp);
+}
+
 int merge(int a[], int temp[], const int l, const int r, const int end) {  //合并两个已排序好的序列
 	int i = l;
 	int left = l;
@@ -42,14 +54,7 @@ int MergeSortIter(int a[], int temp[], int start, int end) {
 		return left+right+cur;
 	}
 }
-int InversePairs(int a[], int n) {
-	int res = 0;
-	if(n<=1)	return res;
-	int * temp = new int[n];
-	return MergeSortIter(a, temp, 0, n-1);
-	//swap(a, temp);
 
-}
 
 
 

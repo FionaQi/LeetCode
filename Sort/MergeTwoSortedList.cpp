@@ -40,8 +40,8 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 int main() {
     ListNode *node = new ListNode(1);
     node->next = new ListNode(5);
-    node->next->next = new ListNode(8);
-    node->next->next->next = new ListNode(8);
+//    node->next->next = new ListNode(8);
+//    node->next->next->next = new ListNode(8);
     
     ListNode *node2 = new ListNode(0);
     node2->next = new ListNode(0);

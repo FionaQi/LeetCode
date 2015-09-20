@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-struct TreeNode {
+ struct TreeNode {
       int val;
       TreeNode *left;
       TreeNode *right;
@@ -32,5 +32,5 @@ TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
 	vector<int> inorder(in, in + sizeof(in)/sizeof(int));
 	vector<int> postorder(post, post+sizeof(post)/sizeof(int));
 	TreeNode * res = buildTree(inorder, postorder);
-    
+    int i = 0;
 }

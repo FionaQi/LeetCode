@@ -7,7 +7,8 @@ using namespace std;
       TreeNode *right;
       TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  };
- 
+void pathSum(TreeNode * root, int sum, vector<vector<int>> &paths, vector<int> &curpath);
+
 vector<vector<int>> pathSum(TreeNode *root, int sum) {
     vector<vector<int>> res;
     vector<int> cur;

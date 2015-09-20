@@ -8,24 +8,23 @@ struct ListNode {
   };
 
 ListNode* findInsertPos(ListNode *head, int x) {
-ListNode *pre = nullptr;
-for (ListNode *cur = head; cur != nullptr && cur->val <= x;
-pre = cur, cur = cur->next)
-;
-return pre;
+	ListNode *pre = nullptr;
+	for (ListNode *cur = head; cur != nullptr && cur->val <= x; pre = cur, cur = cur->next)
+		;
+	return pre;
 }
 
 ListNode *insertionSortList(ListNode *head) {
-ListNode dummy(INT_MIN);
-//dummy.next = head;
-for (ListNode *cur = head; cur != nullptr;) {
-auto pos = findInsertPos(&dummy, cur->val);
-ListNode *tmp = cur->next;
-cur->next = pos->next;
-pos->next = cur;
-cur = tmp;
-}
-return dummy.next;
+	ListNode dummy(INT_MIN);
+
+	for (ListNode *cur = head; cur != nullptr;) {
+		auto pos = findInsertPos(&dummy, cur->val);
+		ListNode *tmp = cur->next;
+		cur->next = pos->next;
+		pos->next = cur;
+		cur = tmp;
+	}
+	return dummy.next;
 }
 
 
@@ -39,6 +38,5 @@ int main()
 	h2.next = &h3;
 	h3.next = NULL;
 	ListNode * res = insertionSortList(&h);
-	//int t = searchInsert(A, 2, 2);
 	return 0;
 }

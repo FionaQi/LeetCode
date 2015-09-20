@@ -1,3 +1,10 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <string>
+#include <unordered_set>
+using namespace std;
+
 class Solution {
 public:
     void solve(vector<vector<char>>& board) {
@@ -26,7 +33,7 @@ public:
 private:
     void bfs(vector<vector<char>> & board, int x, int y, int w, int h) {
         queue<pair<int, int>> que;
-        pass(board, x+1, y, w, h, que);
+        pass(board, x, y, w, h, que);
         while(!que.empty()) {
             pair<int, int> cur = que.front();
             que.pop();
